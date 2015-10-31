@@ -40,12 +40,7 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, Image')
    .attr({x: 10, y: 390, w: 100, h: 100})
    .color('red')
    .fourway(4)
-   .image('pic.png')  .bind("HitOn", function(hitData) {
-        console.log(hitData);
-        console.log(this);
-        console.log("Collision with Solid entity occurred for the first time.");
-        this.stop();
-    });
+   .image('pic.png');
 
    /*boss.addComponent("Collision").bind('Moved', function(from) {
      if(this.hit('2D')) {
@@ -66,7 +61,11 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, Image')
    //now either solid object or noticing the collision, needs fixing
   boss.addComponent("Collision")
   .checkHits('wallTop') // check for collisions with entities that have the Solid component in each frame
-.bind("HitOff", function(comp) {
+  .bind("HitOn", function(hitData) {
+     console.log(hitData);
+     console.log(this);
+     console.log("Collision with Solid entity occurred for the first time.");
+ }).bind("HitOff", function(comp) {
        //this.attr({x: hitData.x, y:hitData.y});
       console.log(comp);
         console.log("Collision with Solid entity ended.");
