@@ -5,6 +5,17 @@ Crafty.background('url(img/bg.png)');
 //Crafty.sprite("pumpkin.png", {bossImage:[10,390,100,100]});
 //var boss_entity = Crafty.e("2D, DOM, bossImage");
 
+Crafty.e("2D, DOM, Canvas, Text")
+  .attr({x: 40, y: 450})
+  .text("Press X to start")
+  .textColor('white')
+  .textFont({size: '20px', weight:'bold'})
+  .bind('KeyDown', function(e) {
+    if(e.key == 88) {
+      console.log("start perssed");
+    }
+  });
+
 var score = 0;
 
 // Score Box
