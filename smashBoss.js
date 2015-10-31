@@ -25,9 +25,10 @@ var wallLeft = Crafty.e('wallLeft, 2D, Canvas, Color')
     .attr({x: 0, y: 0, w: 10, h: 500})
     .color('brown');
 
-var wallRight = Crafty.e('wallRight, 2D, Canvas, Color')
+var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, Image')
      .attr({x: 740, y: 0, w: 10, h: 500})
      .color('yellow');
+     .image('1wall.png');
 
 //Character Element moves Fourway
  var boss = Crafty.e('2D, DOM, Color, Fourway, Collision, Image')
