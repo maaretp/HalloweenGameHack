@@ -32,13 +32,17 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, wall')
      .attr({x: 740, y: 0, w: 10, h: 500})
      .color('yellow')
 
-var spikeWall = Crafty.e('spikeWall, 2D, Canvas, Color, Image')
-          .attr({x: 730, y: 0, w: 10, h: 500})
-          .image('img/1wall.png');
+var spikeWallRight = Crafty.e('spikeWallRight, 2D, Canvas, Color, Image, spikeWall')
+      .attr({x: 730, y: 0, w: 10, h: 500})
+      .image('img/1wall.png');
+
+var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Color, Image, spikeWall')
+      .attr({x: 10, y: 0, w: 10, h: 500})
+      .image('img/2wall.png');
 
 // Character Element moves Fourway
  var boss = Crafty.e('boss, 2D, DOM, Color, Fourway, Collision, Image')
-   .attr({x: 10, y: 390, w: 100, h: 100})
+   .attr({x: 300, y: 250, w: 100, h: 100})
    .color('red')
    .fourway(4)
    .image('img/pic.png');
