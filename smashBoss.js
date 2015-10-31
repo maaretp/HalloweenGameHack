@@ -39,6 +39,7 @@ function setTimer() {
       //document.getElementById('timer_div').innerHTML = "You are Ready!";
       //console.log(--seconds_left);
       clearInterval(interval);
+      Crafty.stop();
     }
   }, 1000);
 };
