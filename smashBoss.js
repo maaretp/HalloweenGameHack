@@ -48,6 +48,7 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, Image')
    });*/
 
    /* Collision Code */
+   //now either solid object or noticing the collision, needs fixing
   boss.addComponent("Collision")
   .bind('Moved', function(from) {
     console.log(from);
