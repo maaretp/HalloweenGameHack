@@ -1,5 +1,5 @@
 //canvas Element
- Crafty.init(750,500, document.getElementById('game'));
+Crafty.init(750,500, document.getElementById('game'));
 Crafty.background('url(img/bg.png)');
 //placeholder for resizing images
 //Crafty.sprite("pumpkin.png", {bossImage:[10,390,100,100]});
