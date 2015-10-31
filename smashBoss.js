@@ -8,10 +8,12 @@ Crafty.background('url(img/bg.png)');
 var score = 0;
 
 // Score Box
-var scoreBox = Crafty.e("2D, DOM, Canvas, Text")
+var scoreBox = Crafty.e("2D, DOM, Canvas, Color, Text")
+
 .textFont({ size: '20px', weight: 'bold' })
 .textColor('white')
 .attr({ x: 600, y: 450})
+.color('#1A1A1A')
 .text("Score: " + score);
 
 // Walls
@@ -20,24 +22,23 @@ var scoreBox = Crafty.e("2D, DOM, Canvas, Text")
 
 var wallTop = Crafty.e('wallTop, 2D, Canvas, Color, Collision, wall')
    .attr({x: 0, y: 0, w: 750, h: 10})
-   .color('green')
    .collision();
 
 var wallLeft = Crafty.e('wallLeft, 2D, Canvas, Color, wall')
     .attr({x: 0, y: 0, w: 10, h: 500})
-    .color('brown');
+    .color('#1A1A1A');
 
 var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, wall')
      .attr({x: 740, y: 0, w: 10, h: 500})
-     .color('yellow')
+     .color('#1A1A1A');
 
-var spikeWallRight = Crafty.e('spikeWallRight, 2D, Canvas, Color, Image, spikeWall')
+var spikeWallRight = Crafty.e('spikeWallRight, 2D, Canvas, Image, spikeWall')
       .attr({x: 730, y: 0, w: 10, h: 500})
-      .image('img/1wall.png');
+      .image('img/1wall_a.png');
 
-var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Color, Image, spikeWall')
+var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Image, spikeWall')
       .attr({x: 10, y: 0, w: 10, h: 500})
-      .image('img/2wall.png');
+      .image('img/2wall_a.png');
 
 // Character Element moves Fourway
  var boss = Crafty.e('boss, 2D, DOM, Color, Fourway, Collision, Image')
