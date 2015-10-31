@@ -32,7 +32,17 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, wall')
      .attr({x: 740, y: 0, w: 10, h: 500})
      .color('#1A1A1A');
 
+
 var spikeWallRight = Crafty.e('spikeWallRight, 2D, Canvas, Image, spikeWall')
+var wallMiddle = Crafty.e('wallMiddle, 2D, Canvas, Color, wall')
+      .attr({x: 570, y: 250, w: 10, h: 50})
+      .color('yellow')
+
+var wallMiddle2 = Crafty.e('wallMiddle, 2D, Canvas, Color, wall')
+      .attr({x: 60, y: 40, w: 10, h: 50})
+      .color('yellow')
+
+var spikeWallRight = Crafty.e('spikeWallRight, 2D, Canvas, Color, Image, spikeWall')
       .attr({x: 730, y: 0, w: 10, h: 500})
       .image('img/1wall_a.png');
 
@@ -42,54 +52,22 @@ var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Image, spikeWall')
 
 // Character Element moves Fourway
  var boss = Crafty.e('boss, 2D, DOM, Color, Fourway, Collision, Image')
-   .attr({x: 300, y: 250, w: 100, h: 100})
+   .attr({x: 275, y: 250, w: 100, h: 100})
    .color('red')
    .fourway(4)
    .image('img/pic.png');
 
-   /*boss.addComponent("Collision").bind('Moved', function(from) {
-     if(this.hit('2D')) {
-        this.attr({x: from.x, y:from.y});
-     }
-   });*/
-
-   /*
-   .bind('Moved', function(from) {
-     //console.log(this);
-     console.log(from);
-     if(this.hit('2D')) {
-        this.attr({x: from.x, y:from.y});
-     }
-   })*/
-
-   /* Collision Code */
-   //now either solid object or noticing the collision, needs fixing
-  /*boss.addComponent("Collision")
-  .checkHits('wallTop') // check for collisions with entities that have the Solid component in each frame
+  boss.addComponent("Collision")
+  .bind('Moved', function(from) {
+    if(this.hit('wall')) {
+       this.attr({x: from.x, y:from.y});
+    }
+  }).checkHits('spikeWall') // check for collisions with entities that have the Solid component in each frame
   .bind("HitOn", function(hitData) {
-     console.log(hitData);
-     console.log(this);
      console.log("Collision with Solid entity occurred for the first time.");
+     score = score + 10;
 
+     console.log(score);
 
- }).bind("HitOff", function(comp) {
-       //this.attr({x: hitData.x, y:hitData.y});
-      console.log(comp);
-        console.log("Collision with Solid entity ended.");
-    });
-*/
-
-boss.addComponent("Collision")
-.bind('Moved', function(from) {
-  if(this.hit('wall')) {
-     this.attr({x: from.x, y:from.y});
-  }
-}).checkHits('spikeWall') // check for collisions with entities that have the Solid component in each frame
-.bind("HitOn", function(hitData) {
-   console.log("Collision with Solid entity occurred for the first time.");
-   score = score + 10;
-
-   console.log(score);
-
-   scoreBox.text("Score: " + score);
-});
+     scoreBox.text("Score: " + score);
+  });
