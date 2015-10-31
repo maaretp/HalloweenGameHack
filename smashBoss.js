@@ -1,10 +1,16 @@
 //canvas Element
  Crafty.init(750,500, document.getElementById('game'));
- //Crafty.sprite("imgs/spritemap6.png", {flower:[0,0,20,30]});
- //var flower_entity = Crafty.e("2D, DOM, flower");
 
-Crafty.sprite("pumpkin.png", {bossImage:[10,390,100,100]});
-var boss_entity = Crafty.e("2D, DOM, bossImage");
+
+//Crafty.sprite("pumpkin.png", {bossImage:[10,390,100,100]});
+//var boss_entity = Crafty.e("2D, DOM, bossImage");
+
+//Score Box
+var scoreBox = Crafty.e("2D, DOM, Canvas, Color, Text")
+.color('white')
+.textFont({ size: '20px', weight: 'bold' })
+.attr({ x: 600, y: 50})
+.text("Score: 00");
 
 // Walls
  var wallBottom = Crafty.e('wallBottom, 2D, Canvas, Color')
