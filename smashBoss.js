@@ -21,9 +21,10 @@ var scoreBox = Crafty.e("2D, DOM, Canvas, Color, Text")
   .attr({x: 0, y: 490, w: 750, h: 10})
   .color('blue');
 
-var wallTop = Crafty.e('wallTop, 2D, Canvas, Color')
+var wallTop = Crafty.e('wallTop, 2D, Canvas, Color, Collision')
    .attr({x: 0, y: 0, w: 750, h: 10})
-   .color('green');
+   .color('green')
+   .collision();
 
 var wallLeft = Crafty.e('wallLeft, 2D, Canvas, Color')
     .attr({x: 0, y: 0, w: 10, h: 500})
@@ -31,15 +32,20 @@ var wallLeft = Crafty.e('wallLeft, 2D, Canvas, Color')
 
 var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, Image')
      .attr({x: 740, y: 0, w: 10, h: 500})
-     .color('yellow');
+     .color('yellow')
      .image('1wall.png');
 
 //Character Element moves Fourway
- var boss = Crafty.e('2D, DOM, Color, Fourway, Collision, Image')
+ var boss = Crafty.e('boss, 2D, DOM, Color, Fourway, Collision, Image')
    .attr({x: 10, y: 390, w: 100, h: 100})
    .color('red')
    .fourway(4)
-   .image('pic.png');
+   .image('pic.png')  .bind("HitOn", function(hitData) {
+        console.log(hitData);
+        console.log(this);
+        console.log("Collision with Solid entity occurred for the first time.");
+        this.stop();
+    });
 
    /*boss.addComponent("Collision").bind('Moved', function(from) {
      if(this.hit('2D')) {
@@ -47,21 +53,21 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, Image')
      }
    });*/
 
+   /*
+   .bind('Moved', function(from) {
+     //console.log(this);
+     console.log(from);
+     if(this.hit('2D')) {
+        this.attr({x: from.x, y:from.y});
+     }
+   })*/
+
    /* Collision Code */
    //now either solid object or noticing the collision, needs fixing
   boss.addComponent("Collision")
-  .bind('Moved', function(from) {
-    console.log(from);
-    if(this.hit('2D')) {
-       this.attr({x: from.x, y:from.y});
-    }
-  })
-  .checkHits('wallRight') // check for collisions with entities that have the Solid component in each frame
-    .bind("HitOn", function(hitData) {
-       console.log(hitData);
-       console.log("Collision with Solid entity occurred for the first time.");
+  .checkHits('wallTop') // check for collisions with entities that have the Solid component in each frame
+.bind("HitOff", function(comp) {
        //this.attr({x: hitData.x, y:hitData.y});
-   }).bind("HitOff", function(comp) {
       console.log(comp);
         console.log("Collision with Solid entity ended.");
     });
