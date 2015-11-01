@@ -69,11 +69,15 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, wall')
 
 var wallMiddle = Crafty.e('wallMiddle, 2D, Canvas, Color, wall')
       .attr({x: 570, y: 250, w: 10, h: 50})
-      .color('yellow')
+      .color('#1A1A1A')
 
 var wallMiddle2 = Crafty.e('wallMiddle, 2D, Canvas, Color, wall')
       .attr({x: 60, y: 40, w: 10, h: 50})
-      .color('yellow')
+      .color('#1A1A1A')
+
+/*var wallMiddle3 = Crafty.e('wallMiddle, 2D, Canvas, Color, wall')
+        .attr({x: 240, y: 100, w: 10, h: 50})
+        .color('#1A1A1A')*/
 
 var spikeWallRight = Crafty.e('spikeWallRight, 2D, Canvas, Color, Image, spikeWall')
       .attr({x: 730, y: 0, w: 10, h: 500})
