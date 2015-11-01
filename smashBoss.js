@@ -2,7 +2,7 @@
 Crafty.init(750,500, document.getElementById('game'));
 Crafty.background('url(img/bg.png)');
 
-var seconds_left = 21;
+var seconds_left = 41;
 var score = 0;
 var boss = {};
 
