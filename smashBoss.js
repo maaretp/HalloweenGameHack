@@ -1,12 +1,10 @@
 //canvas Element
 Crafty.init(750,500, document.getElementById('game'));
 Crafty.background('url(img/bg.png)');
-//placeholder for resizing images
-//Crafty.sprite("pumpkin.png", {bossImage:[10,390,100,100]});
-//var boss_entity = Crafty.e("2D, DOM, bossImage");
 
 var seconds_left = 21;
 var score = 0;
+var boss = {};
 
 Crafty.e("2D, DOM, Canvas, Text")
   .attr({x: 40, y: 450})
@@ -16,33 +14,34 @@ Crafty.e("2D, DOM, Canvas, Text")
   .bind('KeyDown', function(e) {
     if(e.key == 88) {
       setTimer();
-      console.log("start perssed");
+      createBoss();
     }
   });
 
-
-
 function setTimer() {
   var interval = setInterval(function() {
-    //document.getElementById('timer_div').innerHTML = --seconds_left;
-    var timer = Crafty.e("2D, DOM, Canvas, Color, Text")
-    .textFont({ size: '20px', weight: 'bold' })
-    .textColor('white')
-    .attr({ x: 400, y: 450})
-    .color('#1A1A1A')
-    .text("Timer: " + --seconds_left + "  ");
+    --seconds_left;
 
-  //  console.log(--seconds_left);
+    var timer = timerDisplay(seconds_left);
 
-    if (seconds_left <= 0)
+    if (seconds_left <= -1)
     {
-      //document.getElementById('timer_div').innerHTML = "You are Ready!";
-      //console.log(--seconds_left);
       clearInterval(interval);
       Crafty.stop();
     }
   }, 1000);
 };
+
+function timerDisplay(seconds_left){
+  var timer = Crafty.e("2D, DOM, Canvas, Color, Text")
+  .textFont({ size: '20px', weight: 'bold' })
+  .textColor('white')
+  .attr({ x: 400, y: 450})
+  .color('#1A1A1A')
+  .text("Timer: " + seconds_left + "  ");
+
+  return timer;
+}
 
 // Score Box
 var scoreBox = Crafty.e("2D, DOM, Canvas, Color, Text")
@@ -85,22 +84,25 @@ var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Color, Image, spikeWall
       .image('img/2wall_a.png');
 
 // Character Element moves Fourway
- var boss = Crafty.e('boss, 2D, DOM, Fourway, Collision, Image')
-   .attr({x: 275, y: 250, w: 122, h: 100})
-   .fourway(4)
-   .image('img/witch.png');
+function createBoss(){
+  var boss = Crafty.e('boss, 2D, DOM, Fourway, Collision, Image')
+    .attr({x: 275, y: 250, w: 122, h: 100})
+    .fourway(4)
+    .image('img/witch.png');
 
-  boss.addComponent("Collision")
-  .bind('Moved', function(from) {
-    if(this.hit('wall')) {
-       this.attr({x: from.x, y:from.y});
-    }
-  }).checkHits('spikeWall') // check for collisions with entities that have the Solid component in each frame
-  .bind("HitOn", function(hitData) {
-     console.log("Collision with Solid entity occurred for the first time.");
-     score = score + 10;
+    boss.addComponent("Collision")
+    .bind('Moved', function(from) {
+      if(this.hit('wall')) {
+         this.attr({x: from.x, y:from.y});
+      }
+    }).checkHits('spikeWall') // check for collisions with entities that have the Solid component in each frame
+    .bind("HitOn", function(hitData) {
+       console.log("Collision with Solid entity occurred for the first time.");
+       score = score + 10;
 
-     console.log(score);
+       console.log(score);
 
-     scoreBox.text("Score: " + score);
-  });
+       scoreBox.text("Score: " + score);
+    });
+
+}
