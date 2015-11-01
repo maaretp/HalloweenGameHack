@@ -83,6 +83,26 @@ var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Color, Image, spikeWall
       .attr({x: 10, y: 0, w: 10, h: 500})
       .image('img/2wall.png');
 
+var candy1 = Crafty.e('candy1, 2D, Canvas, Image, candy')
+            .attr({x: 200, y: 250, w: 40, h: 40})
+            .image('img/pink-candy2.png');
+
+var candy2 = Crafty.e('candy2, 2D, Canvas, Image, candy')
+            .attr({x: 400, y: 290, w: 20, h: 20})
+            .image('img/candy_stick2.png');
+
+var candy3 = Crafty.e('candy3, 2D, Canvas, Image, candy')
+            .attr({x: 350, y: 100, w: 40, h: 40})
+            .image('img/pink-candy.png');
+
+var candy4 = Crafty.e('candy4, 2D, Canvas, Image, candy')
+            .attr({x: 150, y: 120, w: 30, h: 30})
+            .image('img/lollipops.png');
+
+var candy5 = Crafty.e('candy5, 2D, Canvas, Image,candy')
+            .attr({x: 660, y: 70, w: 20, h: 20})
+            .image('img/candy_stick.png');
+
 // Character Element moves Fourway
 function createBoss(){
   var boss = Crafty.e('boss, 2D, DOM, Fourway, Collision, Image')
@@ -95,14 +115,30 @@ function createBoss(){
       if(this.hit('wall')) {
          this.attr({x: from.x, y:from.y});
       }
-    }).checkHits('spikeWall') // check for collisions with entities that have the Solid component in each frame
-    .bind("HitOn", function(hitData) {
-       console.log("Collision with Solid entity occurred for the first time.");
-       score = score + 10;
+    });
 
-       console.log(score);
+    boss.checkHits('spikeWall') // check for collisions with entities that have the Solid component in each frame
+    .bind("HitOn", function(hitData) {
+
+       if (hitData[0].obj.__c.spikeWall) {
+         score = scoreCalculation(10);
+       }
 
        scoreBox.text("Score: " + score);
     });
 
+    boss.checkHits('candy')
+    .bind("HitOn", function(hitData) {
+
+       if (hitData[0].obj.__c.candy) {
+         score = scoreCalculation(-1);
+       }
+       scoreBox.text("Score: " + score);
+    });
+
+
+
+}
+function scoreCalculation(example){
+  return score = score + example;
 }
