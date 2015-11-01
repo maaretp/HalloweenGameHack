@@ -147,8 +147,6 @@ function createBoss(){
        scoreBox.text("Score: " + score);
     });
 
-
-
 }
 function scoreCalculation(example){
   return score = score + example;
