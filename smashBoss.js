@@ -77,11 +77,11 @@ var wallMiddle2 = Crafty.e('wallMiddle, 2D, Canvas, Color, wall')
 
 var spikeWallRight = Crafty.e('spikeWallRight, 2D, Canvas, Color, Image, spikeWall')
       .attr({x: 730, y: 0, w: 10, h: 500})
-      .image('img/1wall_a.png');
+      .image('img/1wall.png');
 
 var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Color, Image, spikeWall')
       .attr({x: 10, y: 0, w: 10, h: 500})
-      .image('img/2wall_a.png');
+      .image('img/2wall.png');
 
 // Character Element moves Fourway
 function createBoss(){
