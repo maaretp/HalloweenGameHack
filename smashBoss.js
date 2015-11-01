@@ -144,7 +144,7 @@ function createBoss(){
        if (hitData[0].obj.__c.candy) {
          score = scoreCalculation(-1);
        }
-       scoreBox.text("Score: " + score);
+       scoreBox.text("Score: " + score + "  ");
     });
 
 }
