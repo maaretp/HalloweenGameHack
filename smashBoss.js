@@ -84,11 +84,11 @@ var spikeWallLeft = Crafty.e('spikeWallLeft, 2D, Canvas, Color, Image, spikeWall
       .image('img/2wall.png');
 
 var candy1 = Crafty.e('candy1, 2D, Canvas, Image, candy')
-            .attr({x: 200, y: 250, w: 40, h: 40})
+            .attr({x: 100, y: 270, w: 40, h: 40})
             .image('img/pink-candy2.png');
 
 var candy2 = Crafty.e('candy2, 2D, Canvas, Image, candy')
-            .attr({x: 400, y: 290, w: 20, h: 20})
+            .attr({x: 670, y: 370, w: 20, h: 20})
             .image('img/candy_stick2.png');
 
 var candy3 = Crafty.e('candy3, 2D, Canvas, Image, candy')
@@ -106,7 +106,7 @@ var candy5 = Crafty.e('candy5, 2D, Canvas, Image,candy')
 // Character Element moves Fourway
 function createBoss(){
   var boss = Crafty.e('boss, 2D, DOM, Fourway, Collision, Image')
-    .attr({x: 275, y: 250, w: 122, h: 100})
+    .attr({x: 380, y: 220, w: 122, h: 100})
     .fourway(4)
     .image('img/witch.png');
 
