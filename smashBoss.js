@@ -2,7 +2,12 @@
 Crafty.init(750,500, document.getElementById('game'));
 Crafty.background('url(img/bg.png)');
 
-var seconds_left = 21;
+Crafty.audio.add("music", [
+"music.wav"
+]);
+Crafty.audio.play("music");
+
+var seconds_left = 41;
 var score = 0;
 var boss = {};
 
