@@ -7,6 +7,7 @@ Crafty.audio.add("music", [
 ]);
 Crafty.audio.play("music");
 
+
 var seconds_left = 41;
 var score = 0;
 var boss = {};
