@@ -1,13 +1,21 @@
 body{
-  background-color: black;
+  background-color: #1A1A1A;
 }
 
 .wall {
-  background-color: #9E9E9E;
+  background-color: #1A1A1A;
   margin: auto;
 }
 
 h1{
   color: white;
-text-align: center;
+  text-align: center;
+  font-family: "Creepster", sans-serif;
+  font-size: 40px;
+}
+
+p{
+  font-size:10px;
+  font-family: "Helvetica", sans-serif;
+  text-align: center;
 }

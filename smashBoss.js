@@ -51,6 +51,13 @@ var scoreBox = Crafty.e("2D, DOM, Canvas, Color, Text")
 .color('#1A1A1A')
 .text("Score: " + score);
 
+/* Names
+var names = Crafty.e("2D, DOM, Canvas, Text")
+.textFont({ size: '10px', weight: 'bold' })
+.textColor('white')
+.attr({ x: 40, y: 490})
+.text("Amritha Govindarajan, Tatiana Iovich, Mirya Nezvitskaya, Maaret Pyhäjärvi 2015 Halloween Game Hack Hackathon");*/
+
 // Walls
  var wallBottom = Crafty.e('wallBottom, 2D, Canvas, wall')
   .attr({x: 0, y: 490, w: 750, h: 10});
