@@ -76,12 +76,12 @@ var wallRight = Crafty.e('wallRight, 2D, Canvas, Color, wall')
 
 var wallMiddle = Crafty.e('wallMiddle, 2D, Canvas, Image, wall')
       .attr({x: 570, y: 250, w: 100, h: 60})
-      .image('img/bat.png')
+      .image('img/bat2.png')
     //  .color('#1A1A1A')
 
 var wallMiddle2 = Crafty.e('wallMiddle, 2D, Canvas, Image, wall')
       .attr({x: 60, y: 40, w: 100, h: 60})
-      .image('imag/bat.png')
+      .image('img/bat.png')
 
 /*var wallMiddle3 = Crafty.e('wallMiddle, 2D, Canvas, Color, wall')
         .attr({x: 240, y: 100, w: 10, h: 50})
